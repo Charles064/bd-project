@@ -6,39 +6,5 @@
 </style>
 
 <h1>Edit existing Product</h1>
-<% if @product.errors.any? %>
-<h2>Failed to add product</h2>
-    <ul>
-        <% @product.errors.full_messages.each do |msg| %>
-            <li>
-                <%= msg %>
-            </li>
-        <% end %>
-    </ul>
-<% end %>
 
-<%= form_for @product do |f| %>
-    <table>
-        <tr>
-            <th><%= f.label :name %></th>
-            <th><%= f.label :price %></th>
-            <th><%= f.label :in_stock %></th>
-            <th><%= f.label :perish, "Perishable" %></th>
-            <th><%= f.label :xp_date, "Expire on" %></th>
-            <th></th>
-        </tr>
-        <tr>
-            <td><%= f.text_field :name %></td>
-            <td><%= f.text_field :price %></td>
-            <td><%= f.text_field :in_stock %></td>
-            <td><%= f.check_box :perish %></td>
-            <td><%= f.date_field :xp_date %></td>
-            <td><%= f.submit %></td>
-        </tr>
-    </table>
-
-<% end %>
-
-<p>
-    <%= link_to 'Go back to listing', products_path %>
-</p>
+<%= render 'form' %>

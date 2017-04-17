@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170417021307) do
     t.float    "price"
     t.integer  "in_stock"
     t.boolean  "perish"
-    t.datetime "xp_date"
+    t.date     "xp_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

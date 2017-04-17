@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.float :price
       t.integer :in_stock
       t.boolean :perish
-      t.datetime :xp_date
+      t.date :xp_date
       t.timestamps
       
     end
