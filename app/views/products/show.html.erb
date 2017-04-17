@@ -15,3 +15,7 @@
 <p>
     Expire on: <%= @product.xp_date %>
 </p>
+
+<p>
+    <%= link_to 'Go back to listing', products_path %> | <%= link_to 'Edit', edit_product_path(@product) %>
+</p>

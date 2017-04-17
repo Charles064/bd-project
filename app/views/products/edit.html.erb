@@ -5,7 +5,7 @@
     
 </style>
 
-<h1>Add new product</h1>
+<h1>Edit existing Product</h1>
 <% if @product.errors.any? %>
 <h2>Failed to add product</h2>
     <ul>
@@ -38,6 +38,7 @@
     </table>
 
 <% end %>
+
 <p>
     <%= link_to 'Go back to listing', products_path %>
 </p>
