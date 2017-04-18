@@ -9,6 +9,7 @@ class CreateClient < ActiveRecord::Migration
       t.string :pwd
       t.date :b_date
       t.timestamps
+      
     end
   end
 end
