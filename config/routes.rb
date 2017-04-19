@@ -9,6 +9,7 @@ root 'welcome#home'
 get 'about', to: 'welcome#about'
 
 resources :products
+resources :orders
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
