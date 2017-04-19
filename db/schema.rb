@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418020438) do
+ActiveRecord::Schema.define(version: 20170419065725) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "names"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20170418020438) do
     t.date     "b_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "order_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -42,6 +47,17 @@ ActiveRecord::Schema.define(version: 20170418020438) do
     t.integer  "in_stock"
     t.boolean  "perish"
     t.date     "xp_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "names"
+    t.string   "lastname_1"
+    t.string   "lastname_2"
+    t.string   "email"
+    t.string   "username"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
