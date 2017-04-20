@@ -11,6 +11,7 @@ get 'about', to: 'welcome#about'
 resources :products
 resources :orders
 resources :users
+resources :clients
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
