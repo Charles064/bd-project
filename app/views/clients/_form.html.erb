@@ -1,0 +1,50 @@
+<% if @client.errors.any? %>
+<h2>Failed to create new user</h2>
+    <ul>
+        <% @client.errors.full_messages.each do |msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @client do |f| %>
+
+    <p>
+        <%= f.label :names, "Name" %>
+        <%= f.text_field :names %>
+    </p>
+    <p>
+        <%= f.label :ln1, "Lastname" %>
+        <%= f.text_field :ln1 %>
+    </p>
+    <p>
+        <%= f.label :ln2, "Lastname 2" %>
+        <%= f.text_field :ln2 %>
+    </p>
+    <p>
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email %>
+    </p>
+    <p>
+        <%= f.label :u_name, "Username" %>
+        <%= f.text_field :u_name %>
+    </p>
+    <p>
+        <%= f.label :pwd, "Password" %>
+        <%= f.text_field :pwd %>
+    </p>
+    <p>
+        <%= f.label :b_date, "Birthdate" %>
+        <%= f.date_field :b_date %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+    
+<% end %>
+
+<p>
+    <%= link_to 'Back to client list', clients_path %>
+</p>

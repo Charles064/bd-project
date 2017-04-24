@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     has_many :order_users
     has_many :orders, through: :order_users
     
-    before_save { self.username = username.downcase }
+    # before_save { self.username = username.downcase } case_sensitive false ya omite esto?
     
     validates   :names, presence: true, length: { minimum: 3, maximum: 100 }
     

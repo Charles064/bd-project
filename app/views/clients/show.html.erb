@@ -1,0 +1,53 @@
+<h1>Showing new Client page</h1>
+
+<h1>This is show page</h1>
+
+<table>
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            <%= @client.names.capitalize %> <%= @client.ln1.capitalize %> <%= @client.ln2.capitalize %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Username
+        </td>
+        <td>
+            <%= @client.u_name %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email
+        </td>
+        <td>
+            <%= @client.email %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Password
+        </td>
+        <td>
+            ********
+        </td>
+        <td>
+            Link to change pw
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Registration Date
+        </td>
+        <td>
+            <%= @client.created_at %>
+        </td>
+    </tr>
+</table>
+
+<p>
+    <%= link_to 'Back to client list', clients_path %> | <%= link_to 'Edit', edit_client_path %>
+</p>
