@@ -1,1 +1,36 @@
 <h1>This is NEW ORDER page!</h1>
+
+<%= form_for @order do |o| %>
+   <%= o.collection_check_boxes :product_ids, Product.all, :id, :name do |pd|  %>
+       <table>
+           <tr>
+                <th>
+                    Select Product
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <%= pd.label(class: "checkbox-inline input_checkbox") {pd.check_box(class: "checkbox") + pd.text} %>
+                </td>
+                <td>
+                    
+                </td>
+                <td>
+                    <%= o.text_field :t_cost %>
+                </td>
+            </tr>
+   <% end %>
+            <tr>
+                <td>
+                    <%= o.submit, :multiple => true %>    
+                </td>
+            </tr>
+        
+    </table>
+<% end %>
