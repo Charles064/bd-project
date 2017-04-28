@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
     
     before_action :set_prod, only: [:edit, :update, :show, :destroy]
+    before_action :require_user
     
     
     def index

@@ -1,5 +1,7 @@
 <h1>Hello <%= current_client.names %></h1>
 
 <p>
-    <%= link_to 'Log Out', client_logout_path, method: :delete %>
+    <% if client_logged_in? %>
+        <%= link_to 'Log Out', client_logout_path, method: :delete %>
+    <% end %>
 </p>

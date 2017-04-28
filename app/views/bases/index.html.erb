@@ -1,8 +1,21 @@
-<h1>Employee Base</h1>
+<h1>
+    <% if current_user.admin? %>
+        Admin 
+    <% else %>
+        Employee 
+    <% end %>
+    Base
+</h1>
 
 <p>
-    <%= link_to 'Show Clients', clients_path %> | <%= link_to 'Show Users', users_path %> | <%= link_to 'Show Orders', orders_path %> | <%= link_to 'Show Products', products_path %>
+    <% if current_user.admin? %>
+        <%= link_to 'Show Clients', clients_path %> | <%= link_to 'Show Users', users_path %> | <%= link_to 'Show Orders', orders_path %> | <%= link_to 'Show Products', products_path %>
+    <% else %>
+        <%= link_to 'Show Orders', orders_path %> | <%= link_to 'Show Products', products_path %>
+    <% end %>
 </p>
 <p>
-    <%= link_to 'Log Out', user_logout_path, method: :delete %>
+    <% if user_logged_in? %>
+        <%= link_to 'Log Out', user_logout_path, method: :delete %>
+    <% end %>
 </p>

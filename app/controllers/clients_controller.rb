@@ -1,4 +1,7 @@
 class ClientsController < ApplicationController
+    before_action :set_client, only: [:edit, :update, :show, :destroy]
+    before_action :require_client, except: [:new, :create]
+    before_action :require_same_client, only: [:edit, :destroy]
    
     def index
        @clients = Client.all 
@@ -9,19 +12,18 @@ class ClientsController < ApplicationController
     end
     
     def show
-       @client = Client.find(params[:id])
     end
     
     def edit
-        @client = Client.find(params[:id])
     end
     
     def create
         # render plain: params[:client].inspect
         @client = Client.new(client_params)
         if @client.save
+            session[:client_id] = @client.id
             flash[:notice] = "Account has been created"
-            redirect_to client_path(@client)
+            redirect_to client_base_path(@client)
         else
             render 'new' 
         end
@@ -29,7 +31,6 @@ class ClientsController < ApplicationController
     end
     
     def update
-       @client = Client.find(params[:id]) 
        if @client.update(client_params)
            flash[:notice] = "Account has been updated"
            redirect_to client_path(@client)
@@ -39,7 +40,6 @@ class ClientsController < ApplicationController
     end
     
     def destroy
-        @client = Client.find(params[:id])
        @client.destroy
        flash[:notice] = "Account has been deleted"
        redirect_to clients_path
@@ -49,6 +49,17 @@ class ClientsController < ApplicationController
     
     def client_params
        params.require(:client).permit(:names, :ln1, :ln2, :email, :u_name, :password, :b_date )
+    end
+    
+    def set_client
+       @client = Client.find(params[:id]) 
+    end
+    
+    def require_same_client
+        if current_client != @client && !current_user.admin?
+            flash[:danger] = "That's not your info!"
+            redirect_to root_path
+        end
     end
     
 end

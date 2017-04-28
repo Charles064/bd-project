@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_client
-    if !client_logged_in?
+    if !client_logged_in? && !current_user.admin?
       flash[:danger] = "You must be logged in to do that!"
       redirect_to root_path
     end

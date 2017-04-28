@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
     
+    before_action :require_user
+    
     def index
         @order = Order.all
     end
@@ -11,6 +13,8 @@ class OrdersController < ApplicationController
     
     def create
         render plain: params[:order].inspect
+        @order.user = current_user
+        
     end
     
     def show
