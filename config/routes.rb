@@ -13,6 +13,16 @@ resources :orders
 resources :users
 resources :clients
 
+get 'user/login', to: 'sessions#new'
+post 'user/login', to: 'sessions#create'
+delete 'user/logout', to: 'sessions#destroy'
+
+get 'client/login', to: 'client_sessions#new'
+post 'client/login', to: 'client_sessions#create'
+delete 'client/logout', to: 'client_sessions#destroy'
+
+get 'user/base', to: 'bases#index'
+get 'client/base', to: 'client_bases#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

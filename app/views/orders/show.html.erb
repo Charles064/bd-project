@@ -1,4 +1,4 @@
-<h1>Listing all orders</h1>
+<h1>Order Complete Info</h1>
 
 <table>
     <tr>
@@ -12,23 +12,16 @@
             Payment Method
         </th>
     </tr>
-    <% @order.each do |o| %>
+    
     <tr>
         <td>
-            $<%= o.t_cost %>
+            $<%= @order.t_cost %>
         </td>
         <td>
-            <%= o.date  %>
+            <%= @order.date  %>
         </td>
         <td>
-            <%= o.payment %>
+            <%= @order.payment %>
         </td>
     </tr>
-    <% end %>
 </table>
-
-
-
-<p>
-    <%= link_to 'New Order', new_order_path %>    AÑADIR MAS ORDENES 
-</p>

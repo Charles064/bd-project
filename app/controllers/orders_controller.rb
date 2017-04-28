@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
     
+    def index
+        @order = Order.all
+    end
+    
     def new
         @order = Order.new
         @products = Product.all
@@ -8,4 +12,9 @@ class OrdersController < ApplicationController
     def create
         render plain: params[:order].inspect
     end
+    
+    def show
+        @order = Order.find(params[:id])
+    end
+    
 end

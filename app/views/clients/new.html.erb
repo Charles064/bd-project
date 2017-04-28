@@ -1,3 +1,52 @@
-<h1>This is Client New page</h1>
+<h1>Create Your New Account!</h1>
 
-<%= render 'form' %>
+<% if @client.errors.any? %>
+<h2>Failed to create new user</h2>
+    <ul>
+        <% @client.errors.full_messages.each do |msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @client do |f| %>
+
+    <p>
+        <%= f.label :names, "Name" %>
+        <%= f.text_field :names %>
+    </p>
+    <p>
+        <%= f.label :ln1, "Lastname" %>
+        <%= f.text_field :ln1 %>
+    </p>
+    <p>
+        <%= f.label :ln2, "Lastname" %>
+        <%= f.text_field :ln2 %>
+    </p>
+    <p>
+        <%= f.label :email, "Email" %>
+        <%= f.email_field :email %>
+    </p>
+    <p>
+        <%= f.label :u_name, "Username" %>
+        <%= f.text_field :u_name %>
+    </p>
+    <p>
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password %>
+    </p>
+    <p>
+        <%= f.label :b_date, "Birthdate" %>
+        <%= f.date_field :b_date %>
+    </p>
+    <p>
+        <%= f.submit "Sign Up" %>
+    </p>
+    
+<% end %>
+
+<p>
+    <%= link_to 'Back to client list', clients_path %>
+</p>

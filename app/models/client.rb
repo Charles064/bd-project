@@ -1,6 +1,8 @@
 class Client < ActiveRecord::Base
     has_many :orders
     
+     before_save { self.u_name = u_name.downcase }
+    
     validates   :names, presence: true, length: { minimum: 3, maximum: 100 }
     
     validates   :ln1, presence: true, length: { minimum: 3, maximum: 50 }
@@ -12,7 +14,7 @@ class Client < ActiveRecord::Base
     validates   :u_name, presence: true, uniqueness: { case_sensitive: false }, 
                 length: { minimum: 3, maximum: 25 }
                 
-    validates   :pwd, presence: true, length: { minimum: 8, maximum: 30 }
+    has_secure_password
     
     validates   :b_date, presence: true
     

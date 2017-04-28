@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419170704) do
+ActiveRecord::Schema.define(version: 20170427161941) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "names"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170419170704) do
     t.date     "b_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -56,7 +57,28 @@ ActiveRecord::Schema.define(version: 20170419170704) do
     t.date     "xp_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "temp_id"
   end
+
+  add_index "products", ["temp_id"], name: "index_products_on_temp_id"
+
+  create_table "temp_files", force: :cascade do |t|
+    t.integer "product_id"
+    t.string  "p_name"
+    t.float   "p_price"
+    t.integer "p_quant"
+  end
+
+  add_index "temp_files", ["product_id"], name: "index_temp_files_on_product_id"
+
+  create_table "temps", force: :cascade do |t|
+    t.integer "product_id"
+    t.string  "product_name"
+    t.float   "product_price"
+    t.integer "product_quantity"
+  end
+
+  add_index "temps", ["product_id"], name: "index_temps_on_product_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "names"
@@ -67,6 +89,7 @@ ActiveRecord::Schema.define(version: 20170419170704) do
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
 end
