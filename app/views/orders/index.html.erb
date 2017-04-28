@@ -11,6 +11,9 @@
         <th>
             Payment Method
         </th>
+        <th>
+            Product(s)
+        </th>
     </tr>
     <% @order.each do |o| %>
     <tr>
@@ -23,6 +26,9 @@
         <td>
             <%= o.payment %>
         </td>
+        <td>
+            Lista de Productos
+        </td>
     </tr>
     <% end %>
 </table>
@@ -30,5 +36,5 @@
 
 
 <p>
-    <%= link_to 'New Order', new_order_path %>    AÑADIR MAS ORDENES 
+    <%= link_to 'New Order', new_order_path %>
 </p>
